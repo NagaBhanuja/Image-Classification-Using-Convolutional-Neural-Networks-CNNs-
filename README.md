@@ -1,59 +1,54 @@
-# 🖼️ CIFAR-10 Image Classification with VGG16
+# Image Classification Using Convolutional Neural Networks (CNNs)
 
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![Keras](https://img.shields.io/badge/Keras-Deep%20Learning-D00000?style=for-the-badge&logo=keras&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-Deep%20Learning-red?style=for-the-badge&logo=keras&logoColor=white)
 
-## 📄 Project Overview
-This project implements a **Convolutional Neural Network (CNN)** for image classification tasks using the **CIFAR-10 dataset**. 
+## 📌 Project Overview
+This project implements an image classification system using **Convolutional Neural Networks (CNNs)**. It utilizes **Transfer Learning** with the pre-trained **VGG16** architecture to classify images from the **CIFAR-10** dataset into 10 distinct categories.
 
-To achieve higher accuracy with limited training time, this project utilizes **Transfer Learning**. Specifically, it adapts the **VGG16 architecture** (pre-trained on ImageNet) as a feature extractor, combining it with a custom dense classification head to distinguish between 10 different categories of objects.
+The primary goal is to demonstrate how to leverage a powerful pre-trained feature extractor (VGG16) and adapt it for a new classification task by adding custom fully connected layers.
 
-## 🎯 Key Features
-* [cite_start]**Transfer Learning**: Leverages the powerful feature extraction capabilities of VGG16[cite: 6, 22].
-* [cite_start]**Deep Learning Architecture**: Custom fully connected layers added on top of the frozen base model[cite: 33, 34, 35].
-* [cite_start]**Optimization**: Uses Stochastic Gradient Descent (SGD) with momentum for stable convergence.
-* [cite_start]**Visualization**: Includes prediction visualization with Matplotlib[cite: 130].
+## 📂 Dataset
+The project utilizes the **CIFAR-10** dataset, a standard benchmark in computer vision.
+* **Input Dimensions:** 32x32 pixels (Color/RGB)
+* **Training Set:** 50,000 images
+* **Test Set:** 10,000 images
+* **Classes:** Airplane, Automobile, Bird, Cat, Deer, Dog, Frog, Horse, Ship, Truck
 
-## 📊 Dataset Details
-[cite_start]The model is trained on the **CIFAR-10** dataset[cite: 5, 12], which includes:
-* **Input Shape**: 32x32 pixels (Color/RGB)
-* [cite_start]**Classes**: 10 (Airplane, Automobile, Bird, Cat, Deer, Dog, Frog, Horse, Ship, Truck) [cite: 127]
-* **Data Split**: 50,000 Training images, 10,000 Test images
+## 🧠 Model Architecture
+The model uses **VGG16** (trained on ImageNet) as the base, with its weights frozen to preserve learned features. A custom classification head is added on top:
 
-## 🏗️ Model Architecture
-1.  **Input Layer**: 32x32x3 RGB Images.
-2.  [cite_start]**Base Model (Frozen)**: VGG16 (Weights: ImageNet)[cite: 22, 26].
-3.  [cite_start]**Flatten Layer**: Converts 2D feature maps to vectors[cite: 30].
-4.  [cite_start]**Hidden Layer 1**: Dense (256 units, ReLU activation)[cite: 33].
-5.  [cite_start]**Hidden Layer 2**: Dense (128 units, ReLU activation)[cite: 34].
-6.  [cite_start]**Output Layer**: Dense (10 units, Softmax activation)[cite: 35].
+1.  **Base Model:** VGG16 (exclude top layers, input shape 32x32x3)
+2.  **Flatten Layer:** Converts 2D feature maps into a 1D vector
+3.  **Dense Layer:** 256 neurons (ReLU activation)
+4.  **Dense Layer:** 128 neurons (ReLU activation)
+5.  **Output Layer:** 10 neurons (Softmax activation)
 
-## 🛠️ Installation & Usage
+## ⚙️ Training Configuration
+* **Optimizer:** SGD (Stochastic Gradient Descent)
+    * Learning Rate: 0.001
+    * Momentum: 0.9
+* **Loss Function:** Categorical Crossentropy
+* **Epochs:** 10
+* **Batch Size:** 32
 
-### Prerequisites
-Ensure you have the following libraries installed:
-```bash
-pip install tensorflow numpy matplotlib
+## 📊 Results
+Upon evaluation on the test set, the model achieves an accuracy of approximately **60%** after 10 epochs.
 
-Python Script: Run the script directly in your terminal:
+* **Test Loss:** ~1.13
+* **Test Accuracy:** ~60.5%
 
-Bash
+## 🚀 How to Run
+1.  **Prerequisites:** Ensure Python, TensorFlow, and Matplotlib are installed.
+    ```bash
+    pip install tensorflow numpy matplotlib
+    ```
+2.  **Execution:** Run the provided notebook or Python script.
+    ```bash
+    python image_classification_using_cnns.py
+    ```
+3.  **Prediction:** The script includes a demonstration where it predicts the class of a single test image (e.g., classifying a "Ship") and visualizes it.
 
-python image_classification_using_convolutional_neural_networks_(cnns).py
-📈 Performance
-
-Epochs: 10 
-
-
-Loss Function: Categorical Crossentropy 
-
-
-Test Accuracy: ~60% on unseen data using the Transfer Learning approach.
-
-📷 Sample Prediction
-The model takes a test image as input and outputs the predicted class label.
-
-
-Example: Input image of a ship is correctly classified as ship.
+---
+*This project is for educational purposes to demonstrate Transfer Learning with Keras.*
