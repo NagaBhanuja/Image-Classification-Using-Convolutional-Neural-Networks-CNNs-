@@ -36,3 +36,24 @@ To achieve higher accuracy with limited training time, this project utilizes **T
 Ensure you have the following libraries installed:
 ```bash
 pip install tensorflow numpy matplotlib
+
+Python Script: Run the script directly in your terminal:
+
+Bash
+
+python image_classification_using_convolutional_neural_networks_(cnns).py
+📈 Performance
+
+Epochs: 10 
+
+
+Loss Function: Categorical Crossentropy 
+
+
+Test Accuracy: ~60% on unseen data using the Transfer Learning approach.
+
+📷 Sample Prediction
+The model takes a test image as input and outputs the predicted class label.
+
+
+Example: Input image of a ship is correctly classified as ship.
